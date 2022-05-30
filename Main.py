@@ -1,13 +1,10 @@
 import random
-
 import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 import rutermextract
 from rutermextract import TermExtractor
-
 # --
 from commander.commander import Commander
-from vk_bot import VkBot
 from vk_bot import VKan
 # --
 
@@ -36,7 +33,7 @@ for event in longpoll.listen():
 
             print(f'New message from {event.user_id}', end='')
 
-            bot = VkBot(event.user_id)
+
             vkanb = VKan(event.user_id)
 
             if event.text[0] == "/":
@@ -45,8 +42,6 @@ for event in longpoll.listen():
                         write_msg(event.user_id, vkanb.analiz(event.text))
             elif event.text != 'анализ':
                 write_msg(event.user_id, vkanb.analiz(event.text))
-
-
 
             else:
                 write_msg(event.user_id, bot.new_message(event.text))
