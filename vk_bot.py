@@ -1,8 +1,10 @@
 import bs4 as bs4
+import random
 import requests
 import rutermextract
 from rutermextract import TermExtractor
 from vk_api.longpoll import VkEventType
+import krTime
 
 
 
@@ -150,12 +152,12 @@ class VKan:
             term_extractor = TermExtractor()
             text = message
             with open('2.txt', 'w') as ikar:
-                ikar.write(f'Вот ваши ключевые слова из поста:\n')
+                ikar.write(f'Наиболее подходящее время публикацции в часах:{krTime.time} \n Вот ваши ключевые слова из поста:\n')
                 for term in term_extractor(text):
                     ikar.write(term.normalized)
                     ikar.write('\n')
             with open ('2.txt') as lar:
-                return lar.read()
+                return lar.read(),
 
         else:
             return f'Не заню'
